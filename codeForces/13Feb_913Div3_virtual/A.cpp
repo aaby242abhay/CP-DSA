@@ -56,34 +56,11 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 
 void solve(){
-	int n; cin >> n;
-	int a = n/26;
-	int b = n;
-	
-	string ans = "";
-	
-	if( n <=28 ){
-		ans +="aa";
-		n = n-2;
-		ans += n-1+'a';
-	}
-	
-	else if( n<=53 ){
-		ans += 'a';
-		n = n-27;
-		ans += n-1 +'a';
-		ans += 'z';
-	}
-	
-	else {
-		n=n-52;
-		ans += n -1 + 'a';
-		ans += 'z';
-		ans += 'z';
-		
-	}
-	
- 	c1(ans);
+	int n=4;
+	map<int,int> mp;
+	rep(i,0,n) mp.insert({i,i});
+	debug(mp)
+	c1(n);
 	
 	
 }

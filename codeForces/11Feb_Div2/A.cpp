@@ -54,41 +54,40 @@ template <class T> void _print(set <T> v) {cerr << "[ "; for (T i : v) {_print(i
 template <class T> void _print(multiset <T> v) {cerr << "[ "; for (T i : v) {_print(i); cerr << " ";} cerr << "]";}
 template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i : v) {_print(i); cerr << " ";} cerr << "]";}
 
-// const ll N = 1e9;
-// vector<bool> isPrime(N,1);			//making a vector<bool> of size N and making everyone false
-// vector<int> lp(N,0), hp(N,1);
-
-	
 
 void solve(){
-	ll a,b;
-	cin >> a >> b;
-	
-	// isPrime[1] = 1;
-	// if(isPrime[a] && isPrime[b]) c1("No");
-	// else c1("Yes");
-	
-	if(a%2==1 && b%2==1){
-		c1("No");
-		return;
+	int n; cin >> n;
+	string s; cin >> s;
+	if(s[0] == 'a' && s[n-1] == 'a') c1(n);
+	else if(s[0] == 'b' && s[n-1] == 'b') c1(n);
+	else{
+		char c1 = s[0];
+		int ind1 = 0;
+		for(int i=0; i<n; i++){
+			if(s[i] != c1){
+				ind1 = i;
+				break;
+			}
+		}
+		debug(ind1);
+		debug(n);
+		ind1 = n-ind1;
+		debug(ind1);
+		
+		
+		char c2 = s[n-1];
+		int ind2 = 0;
+		for(int i=n-1; i>=0; i--){
+			if(s[i] != c2){
+				ind2 = i;
+				break;
+			}
+		}
+		ind2++;
+		c1(max(ind1, ind2));
 	}
 	
-	if(a%2==1){
-		ll c = b/2;
-		if(c == a) c1("No");
-		else c1("Yes");
-		return;
-	}
-
-	if(b%2==1){
-		ll c = a/2;
-		if(c==b) c1("No");
-		else c1("Yes");
-		return;
-	}
 	
-	c1("Yes");
-	return;
 }
 int main() {
 #ifndef ONLINE_JUDGE
@@ -97,17 +96,6 @@ int main() {
 
 	int tt = 1;
 	cin >> tt;
-	
-	// isPrime[0] = isPrime[1] = false;
-	// for(int i=2; i<N; i++){
-	// 	if(isPrime[i]){
-	// 		for(int j=2*i; j<N; j+=i){
-	// 			isPrime[j] = false;
-	// 		}
-			
-	// 	}
-	// }
-	
 	while(tt--) solve();
 
 }

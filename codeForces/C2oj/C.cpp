@@ -56,19 +56,37 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 
 void solve(){
-	int n,q; cin >> n >> q;
-	string a,b; cin >> a >> b;
+	int n, q; cin >> n >> q;
+	string a,b;
+	cin >> a;
+	cin >> b;
+	vector<int>diff(n+1,0);
+	vector<int>a_(26,0);
+	vector<int>b_(26,0);
 	
-	vector<int>diff(n+1);
-	diff[0] = 0;
-	for(int i=0; i<n; i++){
+	for(int i=1; i<n+1; i++){
+		
+		a_[a[i-1]-'a']++;
+		b_[b[i-1]-'a']++;
 
-		diff[i+1] = diff[i] + !(a[i] == b[i]);
+		int d = 0;
+		for(int j=0; j<26; j++){
+			d += abs(a_[j]-b_[j]);
+		}
+		diff[i] = d;
 	}
+	
 	debug(diff);
+	debug(a_);
+	debug(b_);
 	while(q--){
-		int l,r; cin >> l >> r;
-		c1(diff[r]-diff[l-1]);
+		int l,r;
+		cin >> l >> r;
+		l--;r--;
+		int ans = (abs(diff[r+1]-diff[l]))/2;
+		debug(ans);
+		
+		c1(ans);
 	}
 	
 	

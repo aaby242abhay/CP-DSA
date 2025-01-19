@@ -57,9 +57,8 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve(){
 	int n; cin >> n;
-	int a = n/4;
-	int b = (n%4)/2;
-	c1(a+b);
+	c1(n);
+	debug(n);
 	
 	
 }
